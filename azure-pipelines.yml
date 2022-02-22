@@ -82,7 +82,7 @@ stages:
 - stage: 'DeployDev'
   displayName: 'Deploy to Dev'
   variables: 
-    appName: 'AS3KDemo'
+    appName: 'fredm'
   jobs:
   - deployment: 'Dev'
     pool:
@@ -105,7 +105,7 @@ stages:
 - stage: 'DeployTest'
   displayName: 'Deploy to Test'
   variables: 
-    appName: 'AS3KTest'
+    appName: 'fredmTest'
   jobs:
   - deployment: 'Test'
     pool:
