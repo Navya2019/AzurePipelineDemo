@@ -86,7 +86,7 @@ stages:
   jobs:
   - deployment: 'Dev'
     pool:
-      name: test
+      name: Test
     environment: 'Dev'
     strategy: 
        runOnce:     
@@ -109,7 +109,7 @@ stages:
   jobs:
   - deployment: 'Test'
     pool:
-      name: test
+      name: Test
     environment: 'Test'
     strategy: 
        runOnce:     
@@ -123,4 +123,4 @@ stages:
               appType: 'webAppLinux'
               WebAppName: $(appName)
               packageForLinux: '$(Pipeline.Workspace)/$(artifaceName)/$(buildConfiguration)/*.zip'
-              RuntimeStack: 'DOTNETCORE|5.0'
+              RuntimeStack: 'DOTNETCORE|6.0'
