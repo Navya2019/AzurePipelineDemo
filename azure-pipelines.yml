@@ -25,7 +25,7 @@ stages:
       name: $(poolName)
     
     variables:
-      dotnetSdkVersion: '5.x'
+      dotnetSdkVersion: '6.x'
 
     steps:
     # UI Layer
@@ -96,11 +96,11 @@ stages:
              displayName: 'Deploy .NET Code to Azure App Service '
              inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'Free Trial (cf12cdda-4e4c-4957-a919-d7dbc60b6fcb)'
+              azureSubscription: 'Azure subscription 1(1)(ad85535f-b68b-446b-b6f2-0b21fb21f49e)'
               appType: 'webApp'
               WebAppName: $(appName)
               packageForLinux: '$(Pipeline.Workspace)/$(artifaceName)/$(buildConfiguration)/*.zip'
-              RuntimeStack: 'DOTNETCORE|5.0'
+              RuntimeStack: 'DOTNETCORE|6.0'
 
 - stage: 'DeployTest'
   displayName: 'Deploy to Test'
@@ -115,12 +115,14 @@ stages:
        runOnce:     
         deploy:
           steps:
+
            - task: AzureRmWebAppDeployment@4
              displayName: 'Deploy .NET Code to Azure App Service '
              inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'Free Trial (cf12cdda-4e4c-4957-a919-d7dbc60b6fcb)'
+              azureSubscription: 'Azure subscription 1(1)(ad85535f-b68b-446b-b6f2-0b21fb21f49e)'
               appType: 'webAppLinux'
               WebAppName: $(appName)
               packageForLinux: '$(Pipeline.Workspace)/$(artifaceName)/$(buildConfiguration)/*.zip'
               RuntimeStack: 'DOTNETCORE|6.0'
+      
